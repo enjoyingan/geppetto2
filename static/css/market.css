@@ -1,0 +1,324 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+.layout{
+    display: flex;
+    background-color: white;
+    width:100%;
+    height: 100%;
+    z-index: 6;
+}
+
+html {
+    font-size: 20px;
+    overflow: scroll !important;
+}
+body {
+    font-size: 1rem;
+}
+
+.container {
+    background-color: white;
+    height: 100%;
+    width: 100%;
+}
+
+/* header 시작 */
+
+header {
+    position: fixed;
+    width: 100%;
+    /* background-color: rgba(255, 255, 240, 0); */
+    z-index: 9997;
+}
+
+header .out {
+    width: 54.5rem;
+    margin: 0 auto;
+}
+
+/* .logo {
+    cursor: pointer;
+    height: 60px;
+} */
+
+#main {
+    font-family: 'Nanum Gothic Coding', monospace;
+    /* color: rgb(250, 250, 250); */
+    color: black;
+    font-size: 1.9rem;
+    float: left;
+    padding: 1.1rem 0 1.2rem;
+}
+/* 사이드 메뉴 */
+.box1_list{
+    border-right: 1px solid rgba(87, 87, 86, 0.1);
+    padding-right: 1rem;
+    padding-top: 6rem;
+    width: 100%;
+}
+
+.box1_list ul li{
+    padding-bottom: 40px;
+    list-style: none;
+    margin: 0 auto;
+}
+
+#best{
+    border-bottom: 1px solid rgba(87, 87, 86, 0.1);
+    
+
+}
+#chair{
+    padding-top: 2rem;
+}
+/* 끝 */
+
+header {
+    position: relative;
+    width: 100%;
+    /* background-image: url('../img/diamonds.png'); */
+    background-color: rgba(252, 229, 198, 0);
+    z-index: 9997;
+    height: 5rem;
+}
+
+header .out {
+    width: 65rem;
+    margin-left: 5rem;
+}
+
+
+#nav {
+    position: relative;
+}
+
+#nav li, a {
+    /* color: rgb(250, 250, 250); */
+    color: black;
+    text-decoration: none;
+}
+
+.nav_links {
+    font-family: 'Nanum Gothic Coding', monospace;
+    list-style: none;
+    padding: 1.2rem 0 0 0;
+    position: relative;
+    left: 6rem;
+}
+
+.nav_links li {
+    display: inline-block;
+}
+
+.nav_links li a{
+    padding: 0.75rem 1.4rem 0;
+    height: 2.6rem;
+    display: block;
+    line-height: 100%;
+    font-size: 0.7rem;
+    color: #333;
+}
+
+.nav_info {
+    font-family: 'Nanum Gothic Coding', monospace;
+    font-size: 0.7rem;
+    position: absolute;
+    top: 0.5rem;
+    right: 0;
+    list-style: none;
+}
+
+.nav_info li {
+    display: inline-block;
+    /* float: right; */
+    position: relative;
+}
+
+/* .nav_info li ~ li a::after {
+    content: "";
+    position: absolute;
+    width: 1px;
+    height: 0.6rem;
+    background: #e5e5e5;
+    transform: translateY(-10%);
+} */
+
+.nav_info li a{
+    padding: 0 0.75rem;
+    display: block;
+    line-height: 100%;
+    font-size: 0.7rem;
+    color: #333;
+}
+
+
+/* header 끝 */
+
+
+.background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .5);
+    transition: all .35s;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 9950;
+}
+
+/* content 시작 */
+
+/* sidemenu 아이콘 */
+input[id="menuicon"] {
+    display: none;
+}
+
+header label.menu {
+    position: fixed;
+    top: 50%;
+    right: -20px;
+    transform: translateY(-50%);
+    width: 4rem;
+    height: 5rem;
+    /* display: flex; */
+    cursor: pointer;
+    background-color: black;
+    border-left: .5px solid #000;
+    border-top: .5px solid #000;
+    border-bottom: .5px solid #000;
+    border-radius: 20px;
+}
+
+#pickup {
+    font-family: 'Nanum Gothic', sans-serif;
+    font-family: 'Nanum Gothic Coding', monospace;
+    font-size: .65rem;
+    padding: 0 1rem 0 .2rem;
+    color: white;
+}
+
+.xi-truck {
+    padding: .7rem .5rem .5rem .5rem;
+    color: white;
+}
+
+#exiticon {
+    cursor: pointer;
+    float: right;
+}
+
+#menubtn {
+    font-family: 'Nanum Gothic', sans-serif;
+    font-family: 'Nanum Gothic Coding', monospace;
+    font-size: 0.7rem;
+    display: block;
+    width: 50px;
+    height: 50px;
+    border-radius: 20px;
+}
+
+/* input[id="menuicon"]:checked ~ label {
+    background-position: -50px 0;
+} */
+
+input[id="menuicon"]+label {
+    display: block;
+    position: fixed;
+    cursor: pointer;
+    top: calc(50% -25px);
+    transition: all .35s;
+    z-index: 9999;
+}
+
+input[id="menuicon"]:checked+label[id="menubtn"] {
+    right: 15rem;
+    transition: all .35s;
+}
+
+/* input체크 */
+
+input#menuicon:checked~header label {
+    background-position: -24px 0;
+}
+
+input#menuicon:checked~.sidebar_content {
+    right: 0;
+}
+
+input#menuicon:checked~.background {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* sidemenu icon 끝 */
+
+div[class="sidebar"] {
+    width: 17rem;
+    height: 100%;
+    background: white;
+    position: fixed;
+    top: 0;
+    right: -17rem;
+    transition: all .35s;
+    z-index: 9999;
+}
+
+input[id="menuicon"]:checked+label+div {
+    right: 0rem;
+}
+
+/* sidemenu 끝 */
+
+
+
+/* sidemenu 끝 */
+
+/* 상품 TEST */
+
+
+.content{
+    display: flex;
+}
+.furn{
+    position: relative;
+    padding-top: 15%;
+    margin-right: 20%;
+    z-index: 3;
+    width: 100%;
+    height: 100%;
+}
+.furn ul{
+    list-style: none;
+}
+.furn ul li{
+    width: 20%;
+    display: inline-block;
+}
+.furn2{
+    display: flex;
+}
+.item_box{
+    padding: 10px;
+}
+/* box 2 안에 이미지들 */
+
+.img_box{
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.img_box img{
+    width: 100%;
+
+}
+.item_box{
+    width: 187px;
+}
+
+/* content 끝 */

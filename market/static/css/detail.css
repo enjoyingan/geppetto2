@@ -1,0 +1,461 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+ul{
+    list-style-type: disc;
+}
+html {
+    overflow-y: scroll !important;
+    font-size: 20px;
+}
+body {
+    font-size: 1rem;
+    min-width: 64rem;
+    word-break: break-all;
+
+}
+
+.container {
+    background-color: white;
+}
+/* 탭 메뉴 실험 */
+input[type="radio"] {display: none;}
+input[type="radio"] + label{display: inline-block; width: 32%; padding:1rem; color:#999;font-size: 0.7rem;cursor: pointer;}
+input[type="radio"]:checked + label {background: #ececec; color: #000;}
+
+.conbox{width: 100%; height: 100%; background: #ececec; margin:0 auto; display: none;}
+
+input[id="tab01"]:checked ~ .con1 {display: block;}
+input[id="tab02"]:checked ~ .con2 {display: block;}
+input[id="tab03"]:checked ~ .con3 {display: block;}
+
+
+/* 끝 */
+/* 사이드 메뉴 */
+.box1_list{
+    border-right: 1px solid rgba(87, 87, 86, 0.1);
+    padding-right: 1rem;
+    padding-top: 6rem;
+    width: 20%;
+}
+
+.box1_list ul li{
+    padding-bottom: 40px;
+    list-style: none;
+    margin: 0 auto;
+}
+
+#best{
+    border-bottom: 1px solid rgba(87, 87, 86, 0.1);
+    
+
+}
+#chair{
+    padding-top: 2rem;
+}
+/* 끝 */
+/* 연습하기 */
+
+.layout{
+    display: flex;
+    background-color: white;
+    width:100%;
+    height: 100%;
+    z-index: 6;
+}
+.prd_detail_ctn{
+    width: 100%;
+    height: 100%;
+}
+.ctn_top{
+    width: 100%;
+    height: 100%;
+}
+.ctn_maingoods_information_contentsgoods_description{
+    width: 100%;
+    height: 100%;
+    background-color: white;
+}
+.goods_information_contentsgoods_review{
+    width: 100%;
+    height: 100%;
+    background-color: white;
+}
+.goods_information_contentsgoods_qna{
+    width: 100%;
+    height: 100%;
+    background-color: white;
+}
+/* 연습 끝 */
+/* header 시작 */
+
+header {
+    position: relative;
+    width: 100%;
+    /* background-image: url('../img/diamonds.png'); */
+    background-color: rgba(252, 229, 198, 0);
+    z-index: 9997;
+    height: 5rem;
+}
+
+header .out {
+    width: 65rem;
+    margin-left: 5rem;
+}
+
+#main {
+    font-family: 'Nanum Gothic', sans-serif;
+    font-family: 'Nanum Gothic Coding', monospace;
+    color: black;
+    font-size: 1.9rem;
+    float: left;
+    padding: 1.1rem 0;
+    cursor: pointer;
+}
+
+#nav {
+    position: relative;
+}
+
+#nav li, a {
+    color: #333;
+    text-decoration: none;
+}
+
+.nav_links {
+    font-family: 'Nanum Gothic', sans-serif;
+    font-family: 'Nanum Gothic Coding', monospace;
+    list-style: none;
+    padding: 1.3rem 0 0 0;
+    position: absolute;
+    left: 22rem;
+}
+
+.nav_links li {
+    display: inline-block;
+}
+
+.nav_links li a {
+    padding: 0.75rem 1.4rem 0;
+    height: 2.6rem;
+    display: block;
+    line-height: 100%;
+    font-size: 0.7rem;
+    color: #333;
+}
+
+.nav_info {
+    font-family: 'Nanum Gothic', sans-serif;
+    font-family: 'Nanum Gothic Coding', monospace;
+    font-size: 0.7rem;
+    position: absolute;
+    top: 2rem;
+    right: 2.5rem;
+    list-style: none;
+}
+
+.nav_info li {
+    display: inline-block;
+    position: relative;
+}
+
+/* .nav_info li ~ li a::after {
+    content: "";
+    position: absolute;
+    width: 1px;
+    height: 0.6rem;
+    background: #e5e5e5;
+    transform: translateY(-10%);
+} */
+
+.nav_info li a {
+    padding: 0 0.75rem;
+    display: block;
+    line-height: 100%;
+    font-size: 0.7rem;
+    color: #333;
+}
+
+/* header 끝 */
+
+/* sidemenu 시작 */
+
+.background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .5);
+    transition: all .35s;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 9950;
+}
+
+/* sidemenu icon 시작 */
+
+input[id="menuicon"] {
+    display: none;
+}
+
+header label.menu {
+    position: fixed;
+    top: 50%;
+    right: -20px;
+    transform: translateY(-50%);
+    width: 4rem;
+    height: 5rem;
+    /* display: flex; */
+    cursor: pointer;
+    background-color: black;
+    border-left: .5px solid #000;
+    border-top: .5px solid #000;
+    border-bottom: .5px solid #000;
+    border-radius: 20px;
+}
+
+#pickup {
+    font-family: 'Nanum Gothic', sans-serif;
+    font-family: 'Nanum Gothic Coding', monospace;
+    font-size: .65rem;
+    padding: 0 1rem 0 .2rem;
+    color: white;
+}
+
+.xi-truck {
+    padding: .7rem .5rem .5rem .5rem;
+    color: white;
+}
+
+#exiticon {
+    cursor: pointer;
+    float: right;
+}
+
+#menubtn {
+    font-family: 'Nanum Gothic', sans-serif;
+    font-family: 'Nanum Gothic Coding', monospace;
+    font-size: 0.7rem;
+    display: block;
+    width: 50px;
+    height: 50px;
+    border-radius: 20px;
+}
+
+/* input[id="menuicon"]:checked ~ label {
+    background-position: -50px 0;
+} */
+
+input[id="menuicon"]+label {
+    display: block;
+    position: fixed;
+    cursor: pointer;
+    top: calc(50% -25px);
+    transition: all .35s;
+    z-index: 9999;
+}
+
+input[id="menuicon"]:checked+label[id="menubtn"] {
+    right: 15rem;
+    transition: all .35s;
+}
+
+/* input체크 */
+
+input#menuicon:checked~header label {
+    background-position: -24px 0;
+}
+
+input#menuicon:checked~.sidebar_content {
+    right: 0;
+}
+
+input#menuicon:checked~.background {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* sidemenu icon 끝 */
+
+div[class="sidebar"] {
+    width: 17rem;
+    height: 100%;
+    background: white;
+    position: fixed;
+    top: 0;
+    right: -17rem;
+    transition: all .35s;
+    z-index: 9999;
+}
+
+input[id="menuicon"]:checked+label+div {
+    right: 0rem;
+}
+
+/* sidemenu 끝 */
+
+/* content 시작 */
+
+.goods{
+    margin-left: 10%;
+    position: relative;
+    background-color: transparent;
+    z-index: 3;
+    padding-top: 15%;
+    width: 100%;
+    height: 100%;
+}
+
+.pro_dtail_top{
+    display: flex;
+}
+.pro_detail_left{
+    margin-right: 1.5rem;
+    width: 40%;
+
+}
+.pro_detail_left img{
+    width: 100%;
+}
+.pro_detail_right{
+    width: 30rem;
+    left: 50%;
+
+}
+.right_section01, .right_section02,
+.right_section03,.right_section04,.right_section05{
+    padding: 5px;
+    padding-bottom: 1rem;
+}
+/* 사은품 배송비 정보 */
+
+.detail_table{
+    padding: 1rem 0;
+    border-top: 1px solid #111;
+
+    border-bottom: 1px solid #dfdfdf;
+}
+.detail_table > table > tbody > tr > td {
+    font-size: 0.7rem;
+    letter-spacing: -0.2px;
+    line-height: 0.95rem;
+    margin-bottom: 1rem;
+}
+
+.detail_table > table > tbody > tr > th {
+    text-align: left;
+    font-size: 0.7rem;
+    letter-spacing: -0.2px;
+    line-height: 0.85rem;
+    font-weight: 400;
+    padding-right: 4rem;
+    padding-bottom: 1rem;
+
+}
+
+/* 끝 */
+
+
+.right_section06{
+    padding-top: 1.5rem;
+}
+.right_section05 ul{
+    list-style: none;
+    
+}
+#jangbaguni{
+    width: 10rem;
+    height: 3rem;
+    background-color: white;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+#gumae{
+    left: 1.5rem;
+    width: 10rem;
+    height: 3rem;
+    background: black;
+    color: white;
+}
+.furn{
+    display: flex;
+    padding-top: 80px;
+}
+.furn2{
+    display: flex;
+}
+.item_box{
+    padding: 10px;
+}
+.btn_box_2 ul li{
+    display: inline-block;
+    padding: 3px;
+    padding-left:2px;
+    padding-right: 2px;
+}
+
+.item_detail table tr th{
+    text-align: left;
+    padding: 15px 0.5rem 13px 15px;
+    border-bottom: 1px solid #ececec;
+    font-size: 0.7rem;
+    letter-spacing: -0.2px;
+    line-height: 0.9rem;
+    font-weight: 400;
+}
+.item_detail table tr td{
+    padding: 15px 0 13px 0;
+    border-bottom: 1px solid #ececec;
+    font-size: 0.7rem;
+    letter-spacing: -0.2px;
+    line-height: 0.9rem;
+    color: #777;
+}
+
+table{
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+td{
+    display: table-cell;
+    vertical-align: inherit;
+}
+
+/* box 2 안에 이미지들 */
+.img_box img{
+    width: 100%;
+
+}
+.item_box{
+    width: 187px;
+}
+.content{
+    display: inline-block;
+}
+/* content 끝 */
+
+/* ScrollTop 시작 */
+
+#btnScrollToTop {
+    position: fixed;
+    right: 30px;
+    bottom: 20px;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: none;
+    background: orange;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+    color: #ffffff;
+    outline: none;
+    cursor: pointer;
+    padding: 12px 0 0 0;
+}
+
+#btnScrollToTop:active {
+    background: red;
+}
+
+/* scrolltotop 끝 */

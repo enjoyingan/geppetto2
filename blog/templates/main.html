@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="C:\Users\tkekd\OneDrive\바탕 화면\전국해커톤\js\jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="C:\Users\tkekd\OneDrive\바탕 화면\전국해커톤\js\jquery.easing.1.3.min.js"></script>
+    <script type="text/javascript" src="C:\Users\tkekd\OneDrive\바탕 화면\전국해커톤\js\scroll_menu.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.5.0/highlight.min.js"></script>
+    <!-- 나눔고딕코딩 -->
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic|Nanum+Gothic+Coding|Nanum+Myeongjo&display=swap"
+        rel="stylesheet">
+    <!-- 주아체 -->
+    <link href="https://fonts.googleapis.com/css?family=Jua|Nanum+Gothic+Coding&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- css -->
+    <link rel="stylesheet" href="{% static 'css/salestyle.css' %}">
+    <link rel="stylesheet" href="{% static 'css/aos.css' %}">
+    <link rel="stylesheet" href="{% static 'css/new_home.css' %}">
+    <script src="{% static 'js/aos.js' %}"></script>
+    <link rel="stylesheet" href="http://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+
+    <title>GEPPETTO</title>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div class="out">
+                <a href="{% url 'main' %}">
+                    <p id="main">GEPPETTO</p>
+                </a>
+                <!-- <div class="search__container">
+                        <input class="search__input" type="text" placeholder="Search">
+                    </div> -->
+                <nav id="nav">
+                    <ul class="nav_links">
+                        <li><a href="{% url 'main' %}" id="intro">소개</a></li>
+                        <li><a href="{% url 'market' %}" id="market">장터</a></li>
+                        <li><a href="{% url 'board' %}" id="board">게시판</a></li>
+                        <li><a href="{% url 'be_geppetto' %}" id="edu">교육 신청</a></li>
+                        <li><a href="{% url 'new2' %}" id="disposal">수거 신청</a></li>
+                    </ul>
+                    <ul class="nav_info">
+                        {% if user.is_active %}
+
+                        <li>
+                            <h3>{{user.username}}</h3>
+                        </li>
+                        <li>
+                            <a href="">
+                                <p>mypage</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{% url 'logout'%}">
+                                <p>logout</p>
+                            </a>
+                        </li>
+                        <!-- 로그아웃 하기 -->
+                        {% else %}
+                        <li><a href="{% url 'login'%}" id="login">로그인</a></li>
+                        <li><a href="{% url 'signup'%}" id="join">회원가입</a></li>
+                        {% endif %}
+                    </ul>
+                </nav>
+            </div>
+            <div>
+                <label for="menuicon" class="menu">
+                    <i class="xi-truck xi-2x"></i>
+                    <p id="pickup">수거요청</p>
+                </label>
+            </div>
+        </header>
+        <div class="content">
+            <input type="checkbox" id="menuicon">
+            <label for="menuicon" class="background"></label>
+            <div class="sidebar">
+                <div class="sidebar_content">
+                    <label for="menuicon"><i class="xi-close-thin xi-2x" id="exiticon"></i></label>
+                    <div class="under">
+                        <p class="subtitle"># 수거 요청</p>
+                        <br>
+                        <div class="row">
+                            <div id="blog-form" class="col-md-4">
+                                <form id="contentForm">
+                                    <div class="form-group">
+                                        <label for="title">제목</label>
+                                        <input name="title" type="text" class="form-control form-control-lg" id="title"
+                                            style="width:15rem;height:1rem;" aria-describedby="" required />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="selection"> 품목 </label>
+                                        <select class="form-control form-control-lg" style="width:15rem;height:1.5rem;">
+                                            <option>의자</option>
+                                            <option>책상</option>
+                                            <option>침대</option>
+                                            <option>옷장</option>
+                                            <option>전자제품</option>
+                                            <option>기타</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="price">희망판매가격</label>
+                                        <input name="price" type="text" class="form-control form-control-lg" id="title"
+                                            style="width:15rem;height:1rem;" aria-describedby="" required />
+                                    </div>
+                                    <form>
+                                        <div class="form-group">
+                                            <label for="exampleFormControlFile1">사진</label>
+                                            <br>
+                                            <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                                        </div>
+                                        <div class=warning>
+                                            <small>* 사진은 실제와 최대한 유사한 사진으로 올려주세요.</small>
+                                            <br>
+                                        </div>
+                                    </form>
+                                    <div class="form-group">
+                                        <label for="">어떤 특이한 점이 있나요?</label>
+                                        <br>
+                                        <textarea name="body" id="body" class="form-control form-control-lg" rows="10"
+                                            cols="40" contenteditable="true"></textarea>
+                                    </div>
+                                    <nav id="saleButton">
+                                        <li>
+                                            수거 부탁드립니다
+                                            <span></span><span></span><span></span><span></span>
+                                        </li>
+                                    </nav>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <label for="sidebar" class="background"></label>
+            <div id="transcroller-body" class="aos-all">
+                <center>
+                    <div class="aos-item" data-aos="flip-up" data-aos-easing="ease-out-cubic" data-aos-duration="2500">
+                        <div class="aos-item__inner">
+                            <img src="{% static 'img/hellogeppetto1.jpg' %}" alt="hellogeppetto" id="hellogeppetto">
+                        </div>
+                    </div>
+                    <span class="hero__scroll" data-aos="fade-up" data-aos-easing="ease" data-aos-delay="800">
+                        Scroll down <br>
+                        <i class="chevron bottom"></i>
+                    </span>
+                    <!-- 2번 페이지 -->
+                    <div class="aos-item" data-aos="zoom-out" data-aos-offset="500" data-aos-duration="550">
+                        <div class="aos-item__inner">
+                            <h3 id="title1"># 'GEPPETTO'란</h3>
+                        </div>
+                    </div>
+                    <div class="aos-item" data-aos="fade-down" data-aos-offset="500" data-aos-duration="1500">
+                        <div class="aos-item__inner">
+                            <img src="{% static 'img/할아버지 말풍선.png' %}" alt="할아버지 말풍선" id="speech_bubble">
+                        </div>
+                    </div>
+                    <div class="aos-item" data-aos="fade-up" data-aos-offset="500" data-aos-duration="1500">
+                        <div class="aos-item__inner">
+                            <img src="{% static 'img/할아버지.png' %}" alt="할아버지" id="grandfa">
+                        </div>
+                    </div>
+                    <div class="aos-item" data-aos="fade-right" data-aos-offset="400" data-aos-duration="1500">
+                        <div class="aos-item__inner">
+                            <img src="{% static 'img/왼쪽선.png' %}" alt="왼쪽선" id="left_line">
+                        </div>
+                    </div>
+                    <div class="aos-item" data-aos="fade-left" data-aos-offset="400" data-aos-duration="1500">
+                        <div class="aos-item__inner">
+                            <img src="{% static 'img/오른쪽선.png' %}" alt="오른쪽선" id="right_line">
+                        </div>
+                    </div>
+                    <div class="aos-item" data-aos="fade-up" data-aos-offset="400" data-aos-duration="1500">
+                        <div class="aos-item__inner">
+                            <img src="{% static 'img/1번페이지설명글.png' %} " alt="1번페이지설명글" id="explain1"
+                                data-aos-duration="1200">
+                        </div>
+                    </div>
+                    <div class="aos-item" data-aos="fade-up-left" data-aos-offset="400" data-aos-duration="1200">
+                        <div class="aos-item__inner">
+                            <img src="{% static 'img/하트손.png' %}" alt="하트손" id="hearthand">
+                        </div>
+                    </div>
+                    <!-- 3번 페이지 -->
+                    <div class="aos-item" data-aos="zoom-out" data-aos-offset="500" data-aos-duration="550">
+                        <div class="aos-item__inner">
+                            <h3 id="title2"># 'GEPPETTO'가 하는 일</h3>
+                        </div>
+                    </div>
+                    <div class="aos-item" data-aos="fade-down" data-aos-offset="550">
+                        <div class="aos-item__inner">
+                            <img src="{% static 'img/하는일 폐가구.png' %}" alt="하는일폐가구" id="trash">
+                        </div>
+                    </div>
+                    <div class="aos-item" data-aos="fade-down" data-aos-offset="400">
+                        <div class="aos-item__inner">
+                            <img src="{% static 'img/하는일 시니어.png' %}" alt="하는일시니어" id="senior">
+                        </div>
+                    </div>
+                    <div class="aos-item" data-aos="fade-down" data-aos-offset="300">
+                        <div class="aos-item__inner">
+                            <img src="{% static 'img/수리&보수.png' %}" alt="수리&보수" id="repair">
+                        </div>
+                    </div>
+                    <div class="aos-item" data-aos="fade-right" data-aos-offset="200" data-aos-duration="500">
+                        <div class="aos-item__inner">
+                            <img src="{% static 'img/화살표1.png' %}" alt="화살표1" id="arrow1">
+                        </div>
+                    </div>
+                    <div class="aos-item" data-aos="fade-down" data-aos-offset="200" data-aos-duration="500">
+                        <div class="aos-item__inner">
+                            <img src="{% static 'img/화살표2.png' %}" alt="화살표2" id="arrow2">
+                        </div>
+                    </div>
+                    <div class="aos-item" data-aos="fade-up" data-aos-offset="-100">
+                        <div class="aos-item__inner">
+                            <img src="{% static 'img/하는일 소비자.png' %}" alt="하는일소비자" id="consumer">
+                        </div>
+                    </div>
+                    <!-- 4번 페이지 -->
+                    <div class="aos-item" data-aos="zoom-out" data-aos-offset="250" data-aos-duration="550">
+                        <div class="aos-item__inner">
+                            <h3 id="title3"># 'GEPPETTO'가 추구하는 가치</h3>
+                        </div>
+                    </div>
+                    <div class="aos-item" data-aos="fade-down" data-aos-offset="300">
+                        <div class="aos-item__inner">
+                            <img src="{% static 'img/3번페이지 설명1.png' %}" alt="3번설명1" id="explain2">
+                        </div>
+                    </div>
+                    <div class="aos-item" data-aos="fade-up">
+                        <div class="aos-item__inner">
+                            <img src="{% static 'img/3번페이지 설명2.png' %}" alt="3번설명2" id="explain3">
+                        </div>
+                    </div>
+                    <div class="aos-item" data-aos="fade-right" data-aos-offset="-100">
+                        <div class="aos-item__inner">
+                            <h3 id="explain4">시니어분들을 교육하여 신입사원으로,</h3>
+                        </div>
+                    </div>
+                    <div class="aos-item" data-aos="fade-left" data-aos-offset="-100">
+                        <div class="aos-item__inner">
+                            <h3 id="explain5">버려진 가구를 수리하여 신제품으로!</h3>
+                        </div>
+                    </div>
+                </center>
+            </div>
+        </div>
+    </div>
+    <button id="btnScrollToTop">
+        <i class="xi-arrow-top xi-3x"></i>
+    </button>
+    <script>
+        const btnScrollToTop = document.querySelector("#btnScrollToTop");
+
+        btnScrollToTop.addEventListener("click", function () {
+            window.scrollTo(0, 0);
+        });
+    </script>
+    <script src="../js/aos.js"></script>
+    <script>
+        AOS.init({
+            easing: 'ease-in-out-sine',
+            duration: 1000
+        });
+    </script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script>
+        $('.hero__scroll').on('click', function (e) {
+            $('html, body').animate({
+                scrollTop: $(window).height()
+            }, 1200);
+        });
+    </script>
+</body>
+
+
+
+
+</html>

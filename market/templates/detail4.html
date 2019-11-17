@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+    
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="http://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Myeongjo&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic+Coding&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Myeongjo&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <link rel="stylesheet" href="http://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <link rel="stylesheet" href="{% static 'css/market.css' %}">
+    <title>Detail</title>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div class="out">
+                <!-- <img src="./캡처2222222222222222222222222222222222222222222.PNG" alt="logo" class="logo"> -->
+                <a href="{% url 'main' %}">
+                        <p id="main">GEPPETTO</p>
+                    </a>
+    
+                    <nav id="nav">
+                        <ul class="nav_links">
+                            <li><a href="{% url 'main' %}" id="intro">소개</a></li>
+                            <li><a href="{% url 'market' %}" id="market">장터</a></li>
+                            <li><a href="{% url 'board' %}" id="board">게시판</a></li>
+                            <li><a href="{% url 'be_geppetto' %}" id="edu">교육 신청</a></li>
+                        </ul>
+                        <ul class="nav_info">
+                                {% if user.is_active %}
+    
+                                <li>
+                                    <h3>{{user.username}}</h3>
+                                </li>
+                                <li>
+                                    <a href="">
+                                        <p>mypage</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'logout'%}">
+                                        <p>logout</p>
+                                    </a>
+                                </li>
+                                <!-- 로그아웃 하기 -->
+                                {% else %}
+                                <li><a href="{% url 'login'%}" id="login">로그인</a></li>
+                                <li><a href="{% url 'signup'%}" id="join">회원가입</a></li>
+                                {% endif %}
+                        </ul>
+                    </nav>
+                </div>
+                <div>
+                <label for="menuicon" class="menu">
+                    <i class="xi-truck xi-2x"></i>
+                    <p id="pickup">수거요청</p>
+                </label>
+            </div>
+        </header>
+        <div class="content">
+            <input type="checkbox" id="menuicon">
+            <label for="menuicon" class="background"></label>
+            <div class="sidebar">
+                <div class="sidebar_content">
+                    <label for="menuicon"><i class="xi-close-thin xi-2x" id="exiticon"></i></label>
+                    <div class="under">
+                        <p class="subtitle"># 수거 요청</p>
+                        <br>
+                        <div class="row">
+
+                            <div id="blog-form" class="col-md-4">
+                                <form id="contentForm">
+                                    <div class="form-group">
+                                        <label for="title">다른 사람들이 볼수 있게 제목을 써주세요</label>
+                                        <input name="title" type="text" placeholder="제목"
+                                            class="form-control form-control-lg" id="title"
+                                            style="width:15rem;height:1rem;" aria-describedby="" required />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="selection"> 품목 </label>
+                                        <select class="form-control form-control-lg" style="width:15rem;height:1.5rem;">
+                                            <option>의자</option>
+                                            <option>책상</option>
+                                            <option>침대</option>
+                                            <option>옷장</option>
+                                            <option>전자제품</option>
+                                            <option>기타</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="price">얼마나 받고 싶으세요?</label>
+                                        <input name="price" placeholder="예시: 10,000원" type="text"
+                                            class="form-control form-control-lg" id="title"
+                                            style="width:15rem;height:1rem;" aria-describedby="" required />
+                                    </div>
+
+                                    <form>
+                                        <div class="form-group">
+                                            <label for="exampleFormControlFile1">사진을 올려주세요</label>
+                                            <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                                        </div>
+                                    </form>
+
+
+                                    <div class="form-group">
+                                        <label for="">어떤 특이한 점이 있나요?</label>
+                                        <br>
+                                        <textarea name="body" id="body" class="form-control form-control-lg" rows="10"
+                                            cols="45" contenteditable="true"></textarea>
+                                    </div>
+                                    <nav id="saleButton">
+                                        <li>
+                                            수거 부탁드립니다
+                                            <span></span><span></span><span></span><span></span>
+                                        </li>
+                                    </nav>
+                                </form>
+                                <div class=warning>
+                                    <br>
+                                    <small>* 사진은 실제와 최대한 유사한 사진으로 올려주세요.</small>
+                                    <br>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <label for="sidebar" class="background"></label>
+            <div class="box_moving">
+                <div class="layout">
+                    <div class="box1_list">
+                        <ul>
+                            <li id="new">
+                                <a href="#">
+                                    <center>신상품</center>
+                                </a>
+                            </li>
+                            <li id="best">
+                                <a href="#">
+                                    <center>베스트</center>
+                                </a>
+                            </li>
+                            <li id="chair">
+                                <a href="#">
+                                    <center>의자</center>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <center>책상</center>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <center>침대</center>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <center>전자제품</center>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <center>기타</center>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="goods">
+                        <form id="goodsForm" method="post">
+                            <div class="pro_dtail_top">
+                                <div class="pro_detail_left" style="border: 1px solid rgba(0,0,0,0.1);"><img
+                                        src="C:\Users\SAMSUNG\Desktop\제페토\제페토.png" alt></div>
+                                <div class="pro_detail_right">
+                                    <div class="right_section01">{{market.name}}</div>
+                                    <div class="right_section02">{{market.description|safe}}</div>
+                                    <div class="right_section03">{{market.price}}원</div>
+                                    <a href="{% url 'market'%}">글 목록</a>
+                                    {% if user.get_username == "admin" %}
+                                        <a href="{%url 'delete4' market.id %}">삭제</a>
+                                    {% endif %}
+                                <!--<div class="right_section04">
+                                        <div class="detail_table">
+                                            <table width: 100%; cellspacing="0" cellpadding="0">
+                                                <caption class="hidden"></caption>
+                                                <colgroup></colgroup>
+                                                <tbody>
+                                                    <tr>
+                                                        <th>사은품</th>
+                                                        <td class="underline">
+                                                            <a href="#">
+                                                                2만원 이상 구매시 사은품 증정
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr style="display:none;">
+                                                        <th>배송</th>
+                                                        <td>
+                                                            <select name="shipping_method"
+                                                                style="border: solid 1px #ccc;"
+                                                                onchange="view_delviery_cost();">
+                                                                <option value="131">
+                                                                    택배(주문시 결제)
+                                                                </option>
+                                                            </select>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>배송정보</th>
+                                                        <td>
+                                                            <div id="131" class="fleft">
+                                                                "기본 배송비 : 2500원"
+                                                                <span class="desc">
+                                                                    (50,000원 이상 무료)
+                                                                </span>
+                                                                <br>
+                                                                "추가 배송비 : 2700원"
+                                                                <span class="desc">
+                                                                    (지역별)
+                                                                </span>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <script>$(function () { view_delviery_cost() });</script>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>--> 
+                                    <div class="right_section05">상품옵션
+                                        <select class="prd_op" style="width:15rem;height:1.5rem;">
+                                            <option>서랍 추가(+10,000)</option>
+                                            <option>검은색으로 도색</option>
+                                            <option>침대</option>
+                                            <option>옷장</option>
+                                            <option>전자제품</option>
+                                            <option>기타</option>
+                                        </select>
+                                    </div>
+                                    <div class="right_section06">
+                                        <div class="btn_box_2">
+                                            <ul>
+                                                <li>
+                                                    <a href="#"><button id="jangbaguni"><span>장바구니</span>
+                                                        </button></a>
+                                                </li>
+                                                <li>
+                                                    <a href="#"><button id="gumae"><span>구매</span>
+
+                                                        </button></a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="prd_detail_ctn">
+                            <div class="ctn_top">
+                                <br>
+                                <br>
+                                <input type="radio" name="tabmenu" id="tab01" checked>
+                                <label for="tab01" id="tab01">상품 소개</label>
+                                <input type="radio" name="tabmenu" id="tab02">
+                                <label for="tab02" id="tab02">상품 후기</label>
+                                <input type="radio" name="tabmenu" id="tab03">
+                                <label for="tab03" id="tab03">상품 문의</label>
+                                <div class="conbox con1">
+                                    상품 소개
+                                    <div class="item_detail_section">
+                                        <center>
+                                            <img src="제페토.png" <p>
+                                            <br>
+                                            <br>
+                                            </p>
+                                        </center>
+                                    </div>
+                                </div>
+                                <div class="conbox con2">
+                                    상품 후기
+                                </div>
+                                <div class="conbox con3">
+                                    상품 문의
+                                </div>
+                            </div>
+                        </div>
+                        <div class="prd_detail_btm" style="display: block">
+                            <div class="related_event">
+                                <div class="slick_type0_wrap">
+                                    관련 컨텐츠
+
+                                </div>
+                                <div class="item_detail">
+                                    <table width="100%" cellspacing="0" cellpadding="0">
+                                        <colgroup>
+                                            <col style="width:12rem">
+                                            <col>
+                                        </colgroup>
+                                        <tbody>
+                                            <h3>상품 고지 정보</h3>
+                                            <tr>
+                                                <th>
+                                                    품명 및 모델명
+                                                </th>
+                                                <td>
+                                                    상세설명참조
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    법에 의한 인증,허가 등을 받았음을 확인할수 있는 경우 그에 대한 사항
+                                                </th>
+                                                <td>
+                                                    상세설명참조
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    제조자,수입품의 경우 수입자를 함께 표기
+                                                </th>
+                                                <td>
+                                                    상세설명참조
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    AS책임자와 전화번호 또는 소비자상담 관련 전화번호
+                                                </th>
+                                                <td>
+                                                    상세설명참조
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="div_info_box">
+                                    <div class="sub_title_box">
+                                        <h3>배송/교환/환불 안내</h3>
+                                    </div>
+                                    <div class="prd_detail_info">
+
+                                    </div>
+                                </div>
+                                <div class="related_section0">다른 상품 안내</div>
+                                <div class="related_section2">비슷한 패턴 안내</div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="box1">
+                </div>
+                <div class="box2">
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

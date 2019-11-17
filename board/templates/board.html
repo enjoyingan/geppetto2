@@ -1,0 +1,204 @@
+{% if user.is_authenticated %}
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/boardstyle1.css' %}">
+    <link rel="stylesheet" href="{% static 'css/salestyle.css' %}">
+    <!--background head-->
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Myeongjo&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic+Coding&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <link rel="stylesheet" href="http://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div class="out">
+                    <a href="{% url 'main' %}">
+                            <p id="main">GEPPETTO</p>
+                        </a>
+        
+                        <nav id="nav">
+                            <ul class="nav_links">
+                                <li><a href="{% url 'main' %}" id="intro">소개</a></li>
+                                <li><a href="{% url 'market' %}" id="market">장터</a></li>
+                                <li><a href="{% url 'board' %}" id="board">게시판</a></li>
+                                <li><a href="{% url 'be_geppetto' %}" id="edu">교육 신청</a></li>
+                                <li><a href="{% url 'new2' %}" id="edu">수거 신청</a></li>
+                            </ul>
+                            <ul class="nav_info">
+                                    {% if user.is_active %}
+        
+                                    <li>
+                                        <h3>{{user.username}}</h3>
+                                    </li>
+                                    <li>
+                                        <a href="">
+                                            <p>mypage</p>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'logout'%}">
+                                            <p>logout</p>
+                                        </a>
+                                    </li>
+                                    <!-- 로그아웃 하기 -->
+                                    {% else %}
+                                    <li><a href="{% url 'login'%}" id="login">로그인</a></li>
+                                    <li><a href="{% url 'signup'%}" id="join">회원가입</a></li>
+                                    {% endif %}
+                            </ul>
+                        </nav>
+                    </div>
+                <label for="menuicon" class="menu">
+                    <i class="xi-truck xi-2x"></i>
+                    <p id="pickup">수거요청</p>
+                </label>
+
+            </div>
+        </header>
+        <div class="content">
+            <input type="checkbox" id="menuicon">
+            <label for="menuicon" class="background"></label>
+            <div class="sidebar">
+                <div class="sidebar_content">
+                    <label for="menuicon"><i class="xi-close-thin xi-2x" id="exiticon"></i></label>
+                    <div class="under">
+                        <p class="subtitle"># 수거 요청</p>
+                        <br>
+                        <div class="row">
+                            <div id="blog-form" class="col-md-4">
+                                <form id="contentForm">
+                                    <div class="form-group">
+                                        <label for="title">제목</label>
+                                        <input name="title" type="text" class="form-control form-control-lg" id="title"
+                                            style="width:15rem;height:1rem;" aria-describedby="" required />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="selection"> 품목 </label>
+                                        <select class="form-control form-control-lg" style="width:15rem;height:1.5rem;">
+                                            <option>의자</option>
+                                            <option>책상</option>
+                                            <option>침대</option>
+                                            <option>옷장</option>
+                                            <option>전자제품</option>
+                                            <option>기타</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="price">희망판매가격</label>
+                                        <input name="price" type="text" class="form-control form-control-lg" id="title"
+                                            style="width:15rem;height:1rem;" aria-describedby="" required />
+                                    </div>
+                                    <form>
+                                        <div class="form-group">
+                                            <label for="exampleFormControlFile1">사진</label>
+                                            <br>
+                                            <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                                        </div>
+                                        <div class=warning>
+                                            <small>* 사진은 실제와 최대한 유사한 사진으로 올려주세요.</small>
+                                            <br>
+                                        </div>
+                                    </form>
+                                    <div class="form-group">
+                                        <label for="">어떤 특이한 점이 있나요?</label>
+                                        <br>
+                                        <textarea name="body" id="body" class="form-control form-control-lg" rows="10"
+                                            cols="40" contenteditable="true"></textarea>
+                                    </div>
+                                    <nav id="saleButton">
+                                        <li>
+                                            수거 부탁드립니다
+                                            <span></span><span></span><span></span><span></span>
+                                        </li>
+                                    </nav>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <label for="sidebar" class="background"></label>
+            <div class="boardbody">
+                <table class="tb table-hover">
+                    <div class="boardtitle">
+                        <p># 자유게시판</p>
+                    </div>
+                    <thead>
+                        <tr>
+                            <th class="tablenav1" scope="col">번호</th>
+                            <th class="tablenav2" scope="col">제목</th>
+                            <th class="tablenav3" scope="col">아이디</th>
+                            <th class="tablenav4" scope="col">날짜</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {% for board in posts %}
+                        <tr>
+                            <th scope="row" class="tableb tableb1">{{board.id}}</th>
+                            <td class="tableb tableb2"><a href="{%url 'detail3' board.id%}">{{board.title}}</a></td>
+                            <td class="tableb tableb3">{{board.writer}}</td>
+                            <td class="tableb tableb4">{{board.pub_date}}</td>
+                        </tr>
+                        {% endfor %}
+
+                    </tbody>
+                </table>
+                {% if posts.has_previous %}
+                <a href="?page=1">
+                    <button id="First">
+                        <span>First</span>
+                    </button>
+                </a>
+                <a href="?page={{posts.previous_page_number}}">
+                    <button id="next">
+                        <span>Next</span>
+                    </button>
+                </a>
+                {% endif %}
+
+                {# NowOfTotal #}
+                <span>{{posts.number}}</span>
+                <span>of</span>
+                <span>{{posts.paginator.num_pages}}</span>
+
+                {% if posts.has_next %}
+                <a href="?page={{posts.next_page_number}}"">
+                    <button id="First">
+                    <span>First</span>
+                    </button></a>
+                <a href=" ?page={{posts.paginator.num_pages}}">
+                    <button id="next">
+                        <span>Next</span>
+                    </button>
+                </a>
+                {% endif %}
+
+                <div class="bottom">
+                    <a href="{% url 'new3'%}">
+                        <button id="write">
+                            <span>글쓰기</span>
+                        </button>
+
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+{% endif %}

@@ -1,0 +1,358 @@
+@font-face { font-family: 'KOMACON'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_seven@1.2/KOMACON.woff') format('woff'); font-weight: normal; font-style: normal; }
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 20px;
+}
+
+body {
+    font-size: 1rem;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.container {
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0);
+    height: 100%;
+    max-width: 100%;
+}
+
+/* header 시작 */
+
+header {
+    position: relative;
+    width: 100%;
+    /* background-image: url('../img/diamonds.png'); */
+    background-color: rgba(252, 229, 198, 0);
+    z-index: 9997;
+    height: 5rem;
+}
+
+header .out {
+    width: 60rem;
+    height: 4.25rem;
+    margin-left: 8rem;
+}
+
+#main {
+    font-family: 'Nanum Gothic', sans-serif;
+    font-family: 'Nanum Gothic Coding', monospace;
+    font-family: 'Nanum Myeongjo', serif;
+    color: black;
+    font-size: 1.9rem;
+    float: left;
+    padding: 1.1rem 0;
+    cursor: pointer;
+}
+
+#nav {
+    position: relative;
+}
+
+#nav li, a {
+    color: #333;
+    text-decoration: none;
+}
+
+.nav_links {
+    font-family: 'Nanum Gothic Coding', monospace;
+    list-style: none;
+    padding: 1.3rem 0 0 0;
+    position: absolute;
+    left: 18rem;
+}
+
+.nav_links li {
+    display: inline-block;
+}
+
+.nav_links li a {
+    padding: 0.75rem 1.4rem 0;
+    height: 2.6rem;
+    display: block;
+    line-height: 100%;
+    font-size: 0.7rem;
+    color: #333;
+}
+
+.nav_info {
+    font-family: 'Nanum Gothic Coding', monospace;
+    font-size: 0.7rem;
+    position: absolute;
+    top: 2rem;
+    right: 0;
+    list-style: none;
+    /* float: right; */
+}
+
+.nav_info li {
+    display: inline-block;
+    position: relative;
+}
+
+/* .nav_info li ~ li a::after {
+    content: "";
+    position: absolute;
+    width: 1px;
+    height: 0.6rem;
+    background: #e5e5e5;
+    transform: translateY(-10%);
+} */
+
+.nav_info li a {
+    padding: 0 0.75rem;
+    display: block;
+    line-height: 100%;
+    font-size: 0.7rem;
+    color: #333;
+}
+
+/* header 끝 */
+
+/* content 시작 */
+
+/* sidemenu 시작 */
+
+.background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .5);
+    transition: all .35s;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 1;
+}
+
+/* sidemenu icon 시작 */
+
+input[id="menuicon"] {
+    display: none;
+}
+
+header label.menu {
+    position: fixed;
+    top: 50%;
+    right: -20px;
+    transform: translateY(-50%);
+    width: 4rem;
+    height: 5rem;
+    /* display: flex; */
+    cursor: pointer;
+    background-color: rgba(177, 207, 187, 1);
+    /* border-left: .5px solid #000;
+    border-top: .5px solid #000;
+    border-bottom: .5px solid #000; */
+    border-radius: 20px;
+}
+
+#pickup {
+    font-family: 'Nanum Gothic Coding', monospace;
+    font-size: .65rem;
+    padding: 0 1rem 0 .2rem;
+    color: white;
+}
+
+.xi-truck {
+    padding: .7rem .5rem .5rem .5rem;
+    color: white;
+}
+
+#exiticon {
+    cursor: pointer;
+    float: right;
+}
+
+#menubtn {
+    font-family: 'Nanum Gothic', sans-serif;
+    font-family: 'Nanum Gothic Coding', monospace;
+    font-family: 'Nanum Myeongjo', serif;
+    font-size: 0.7rem;
+    display: block;
+    width: 50px;
+    height: 50px;
+    border-radius: 20px;
+}
+
+/* input[id="menuicon"]:checked ~ label {
+    background-position: -50px 0;
+} */
+
+input[id="menuicon"]+label {
+    display: block;
+    position: fixed;
+    cursor: pointer;
+    top: calc(50% -25px);
+    transition: all .35s;
+    z-index: 9999;
+}
+
+input[id="menuicon"]:checked+label[id="menubtn"] {
+    right: 15rem;
+    transition: all .35s;
+}
+
+/* input체크 */
+
+input#menuicon:checked~header label {
+    background-position: -24px 0;
+}
+
+input#menuicon:checked~.sidebar_content {
+    right: 0;
+}
+
+input#menuicon:checked~.background {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* sidemenu icon 끝 */
+
+div[class="sidebar"] {
+    width: 17rem;
+    height: 100%;
+    background: white;
+    position: fixed;
+    top: 0;
+    right: -17rem;
+    transition: all .35s;
+    z-index: 9999;
+}
+
+input[id="menuicon"]:checked+label+div {
+    right: 0rem;
+}
+
+/* sidemenu 끝 */
+
+/* 게시판 이름 */
+.boardtitle{
+    padding-left:7px;
+    font-family: 'KOMACON';
+    font-size:25px;
+    color: #81674C;
+}
+
+/* 게시판 table*/
+#next, #First{
+    width: 2rem;
+    height: 2rem;
+}
+.boardbody{
+    min-width: 300px;
+    font-family: 'KOMACON';
+    font-size:17px;
+    margin-left:300px;
+    margin-top:50px;
+}
+.bottom{
+    width: 40rem;
+    height: 5rem;
+    margin: 0;
+}
+#write{
+    margin-left: 97%;
+    width: 5rem;
+    height: 3rem;
+}
+.table-hover th{
+    border-bottom: 1px solid rgba(0, 0, 0, .5);
+}
+.tableb{
+    border-bottom: 1px solid rgba(0, 0, 0, .5);
+}
+
+/*thead*/
+.tablenav{
+    border:1.2px solid #575756;
+}
+.tablenav1{
+    height:35px;
+    width:100px;
+    text-align:center;
+    padding: 0 0;
+}
+.tablenav2{
+    width:400px;
+    text-align:center;
+    padding: 0 0;
+}
+.tablenav3, .tablenav4{
+    width:180px;
+    text-align:center;
+    padding: 0 0;
+}
+thead{
+    padding-bottom:10px;
+    border-bottom:2px solid #81674C;
+}
+tr{
+    height:30px;
+}
+
+/*table body*/
+.tableb1, .tableb3, .tableb4{
+    text-align:center;
+}
+.tableb{
+    padding:5px 5px;
+    font-size:18px;
+}
+
+/*글쓰기 버튼*/
+.tablefoot{
+    margin-top:50%;
+    border-top:2px solid orange;
+}
+.butt {
+    padding:2.5px 15px;
+    margin-top:10px;
+    margin-left:46.7%;
+    font-size: 20px;
+    cursor: pointer;
+    position: absolute;
+    border: 1.2px solid orange;
+    border-radius: 2px;
+    outline: none;
+    color: black;
+    background-color: white;
+    white-space: nowrap;
+}
+.butt--swap span {
+    padding:2.5px 15px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    font-size: 20px;
+    box-sizing: border-box;
+    border-radius: 2px;
+    opacity: 0;
+    color: white;
+    transition: 0.35s ease;
+}
+.butt--swap::before {
+    content: "";
+    left: 0;
+    top: 0;
+    position: absolute;
+    width: 0;
+    height: 100%;
+    background-color: orange;
+    transition: 0.5s ease;
+}
+.butt--swap:hover:before {
+    width: 100%;
+}
+.butt--swap:hover span {
+    opacity: 1;
+}

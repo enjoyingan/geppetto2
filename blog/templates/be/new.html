@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Edu</title>
+    <link rel="stylesheet" href="{% static 'css/edu.css' %}">
+    <!--background head-->
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Myeongjo&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic+Coding&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <link rel="stylesheet" href="http://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+</head>
+<body>
+    <div class="container">
+
+        <header>
+            <div class="out">
+                <p id="main">GEPPETTO</p>
+                <!-- <div class="search__container">
+                    <input class="search__input" type="text" placeholder="Search">
+                </div> -->
+                <nav id="nav">
+                        <ul class="nav_links">
+                            <li><a href="{% url 'main' %}" id="intro">소개</a></li>
+                            <li><a href="{% url 'market' %}" id="market">장터</a></li>
+                            <li><a href="{% url 'board' %}" id="board">게시판</a></li>
+                            <li><a href="{% url 'be_geppetto' %}" id="edu">교육 신청</a></li>
+                            <li><a href="{% url 'new2' %}" id="edu">수거신청</a></li>
+                        </ul>
+                        <ul class="nav_info">
+                                {% if user.is_active %}
+    
+                                <li>
+                                    <h3>{{user.username}}</h3>
+                                </li>
+                                <li>
+                                    <a href="">
+                                        <p>mypage</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'logout'%}">
+                                        <p>logout</p>
+                                    </a>
+                                </li>
+                                <!-- 로그아웃 하기 -->
+                                {% else %}
+                                <li><a href="{% url 'login'%}" id="login">로그인</a></li>
+                                <li><a href="{% url 'signup'%}" id="join">회원가입</a></li>
+                                {% endif %}
+                        </ul>
+                    </nav>
+                </div>
+                <label for="menuicon" class="menu">
+                    <i class="xi-truck xi-2x"></i>
+                    <p id="pickup">수거요청</p>
+                </label>
+            </div>
+        </header>
+
+        <div class="under">
+
+            <div class=job>
+                    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,700' rel='stylesheet' type='text/css'>
+                    <form action="{% url 'create' %}">
+                    <div class="jobsignup">
+                        <h2>교육 신청하기</h2>
+                        <div class="field field--block">
+                            <input class="field__input input input--text input--required" name="title"  id="1" type="text" />
+                            <label class="field__label label--required"  for="1">글 제목</label>
+                        </div>
+                        <div class="field field--half">
+                            <input class="field__input input input--text ban" id="3" type="text" disabled />
+                            <label class="field__label" for="3">이름 : {{request.user.profile.name}}</label>		
+                        </div>
+                        
+                        <div class="field field--half">
+                            <input class="field__input input input--text" id="4" name="age" type="text" />
+                            <label class="field__label"  for="4">나이 <p class=warning>*숫자만 입력해주세요 ex)60</p></label>	
+                        </div>
+                        
+                        <div class="field field--three-quarter">
+                            <input class="field__input input input--text ban" id="5" type="text" disabled />
+                            <label class="field__label" for="5">아이디 : {{user.get_username}}</label>	
+                        </div>
+                        
+                        <div class="field field--quarter">
+                            <input class="field__input input input--text ban" id="6" type="text" disabled />
+                            <label class="field__label" for="6">전화번호 : {{request.user.profile.phone}}</label>
+                        </div>
+                        
+                        <div class="field field--block">
+                            <textarea class="field__input input input--textarea" name="body" id="7" type="text"></textarea>
+                            <label class="field__label" for="7">경력사항</label>
+                        </div>
+                        <div class="field field--block form-action">
+                                <input class="submit" type="submit" value="신청하기" align="center">
+                        </div>
+                    </div>
+                </form>
+                    
+            </div>
+        
+        </div>
+
+    </div>
+</body>
+</html>

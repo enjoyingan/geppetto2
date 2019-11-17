@@ -1,0 +1,102 @@
+@font-face { font-family: 'GyeonggiBatang'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/GyeonggiBatang.woff') format('woff'); font-weight: normal; font-style: normal; }
+@font-face { font-family: 'S-CoreDream-3Light'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff'); font-weight: normal; font-style: normal; }
+@font-face { font-family: 'UhBeemysen'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_five@.2.0/UhBeemysen.woff') format('woff'); font-weight: normal; font-style: normal; }
+/* @font-face { font-family: 'Black Han Sans', sans-serif;}
+@font-face { font-family:'Jua', sans-serif;} */
+@font-face { font-family: 'Binggrae-Bold'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Binggrae-Bold.woff') format('woff'); font-weight: normal; font-style: normal; }
+
+.content-item {
+    margin-bottom: 25px;
+    line-height: 20px;
+}
+.subtitle{
+    font-family: 'Binggrae-Bold';
+    padding: 1rem 1rem 0 1rem;
+    margin:0 0;
+}
+.form-control{
+    border-radius: 2px;
+    border: 1.5px solid rgba(0, 0, 0, .2);
+    margin: 10px 0;
+}
+
+.form-control-file{
+    margin: 5px 0;
+}
+.form-group{
+    margin-top: 15px;
+}
+.col-md-4{
+    margin-left: 5%;
+    font-family: 'NanumSquare', sans-serif;
+    font-size: 16px;
+    max-width: 100% !important;
+}
+.warning{
+    color:red;
+}
+#saleButton li {
+    color: black;
+}
+
+#saleButton {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    --c: rgba(177, 207, 187, 1);
+    color: var(--c);
+    font-size: 14px;
+    border: 0.23em solid var(--c);
+    border-radius: 0.5em;
+    width: 22em;
+    height: 3em;
+    text-transform: uppercase;
+    /* font-weight: bold; */
+    font-family: 'NanumSquare', sans-serif;
+    letter-spacing: 0.2em;
+    text-align: center;
+    line-height: 2.5em;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    transition: 0.3s;
+    margin: 1em 0;
+    cursor: pointer;
+}
+
+#saleButton span {
+    position: absolute;
+    width: 25%;
+    height: 100%;
+    background-color: var(--c);
+    transform: translateY(150%);
+    border-radius: 50%;
+    left: calc((var(--n) - 1) * 25%);
+    transition: 0.5s;
+    transition-delay: calc((var(--n) - 1) * 0.1s);
+    z-index: -1;
+}
+
+#saleButton :hover {
+    color: black;
+}
+
+#saleButton :hover span {
+    transform: translateY(0) scale(2);
+}
+
+#saleButton span:nth-child(1) {
+    --n: 1;
+}
+
+#saleButton span:nth-child(2) {
+    --n: 2;
+}
+
+#saleButton span:nth-child(3) {
+    --n: 3;
+}
+
+nav span:nth-child(4) {
+    --n: 4;
+}

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>제페토</title>
+    <link rel="stylesheet" href="{% static 'css/detailstyle.css' %}">
+    <!--background head-->
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Myeongjo&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic+Coding&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <link rel="stylesheet" href="http://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <!--icon-->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+    <!-- 주아체 -->
+    <link href="https://fonts.googleapis.com/css?family=Jua|Nanum+Gothic+Coding&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <div class="container">
+
+        <header>
+            <div class="out">
+                <a href="{% url 'main' %}"><p id="main">GEPPETTO</p></a>
+                <!-- <div class="search__container">
+                    <input class="search__input" type="text" placeholder="Search">
+                </div> -->
+                <nav id="nav">
+                        <ul class="nav_links">
+                            <li><a href="{% url 'main' %}" id="intro">소개</a></li>
+                            <li><a href="{% url 'market' %}" id="market">장터</a></li>
+                            <li><a href="{% url 'board' %}" id="board">게시판</a></li>
+                            <li><a href="{% url 'be_geppetto' %}" id="edu">교육 신청</a></li>
+                        </ul>
+                        <ul class="nav_info">
+                                {% if user.is_active %}
+    
+                                <li>
+                                    <h3>{{user.username}}</h3>
+                                </li>
+                                <li>
+                                    <a href="">
+                                        <p>mypage</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'logout'%}">
+                                        <p>logout</p>
+                                    </a>
+                                </li>
+                                <!-- 로그아웃 하기 -->
+                                {% else %}
+                                <li><a href="{% url 'login'%}" id="login">로그인</a></li>
+                                <li><a href="{% url 'signup'%}" id="join">회원가입</a></li>
+                                {% endif %}
+                        </ul>
+                    </nav>
+                <label for="menuicon" class="menu">
+                    <i class="xi-truck xi-2x"></i>
+                    <p id="pickup">수거요청</p>
+                </label>
+            </div>
+        </header>
+
+        <div class="under">
+            <div class="blog">
+
+                <div class="bloginfo">
+                    <!--<i class="xi-user-address xi-5x"></i>-->
+                    <img class="pimg" src="{% static 'img/profile.jpg' %}" width="50" height="55">
+                    <div class="infotext">
+                        <div class="bloginfo1">
+                            아이디: {{board.writer}}
+                        </div>
+                        <div class="bloginfo2">
+                            날짜: {{board.pub_date}}   
+                        </div>
+                    </div>
+                </div>
+
+                <div class="blogtitle">
+                    <p>제목: {{board.title}}</p>
+                    <hr class="btline">
+                </div>
+
+                <div class="blogbody">
+                    <p>본문: {{board.body}}</p>
+                </div>
+
+                <div class="good">
+                    <div class="goodicon">
+                        {% if message == "좋아요 취소" %}
+                            <i class="xi-heart xi-2x"></i>
+                        {% else %}
+                            <i class="xi-heart-o xi-2x"></i>
+                            
+                        {% endif %}
+                    </div>
+                    <a href="{% url 'post_like' board.id %}">
+                        {{message}}
+                    </a>
+                    <div class="goodnum">
+                        <br>좋아요 수 {{board.like_count}}
+                    </div>
+                </div>
+                <hr class="btline">
+
+                <div class="comment_title">
+                    <p>댓글</p>
+                </div>
+<!--댓글 쓸 때 마다 반복해야되는 구간 START-->
+                {% for comment in board.comment_set.all %}
+                <hr class="comment_line">
+                <div class="comment comment2">
+                    #
+                    {% if board.writer == comment.writer %}
+                        <td class="tableb2">글쓴이</td> 
+                    {% else %}
+                        <td class="tableb3">아이디: {{comment.writer}}</td> 
+                    {% endif %}
+                </div>
+                <div class="comment comment1">
+                        <td class="tableb1">{{comment.body}}</td>
+                </div>
+                {% endfor %}
+<!--댓글 쓸 때 마다 반복해야되는 구간 END-->
+
+                <form action="{% url 'comment_create' board.id %}" class="commentform">
+                    <textarea name="content" class="form-control is-invalid message" id="validationTextarea" placeholder="댓글 쓰기" required></textarea>
+                    <input class="submit" type="submit" value="완료" align="center">
+                </form>
+
+                <div class="edit">
+                    <i class="xi-align-left xi-x"></i>
+                    <a href="{%url 'board'%}"><p class="edit3">글 목록</p></a>
+                    {% if request.user.profile.name == board.writer %}
+                    <div class="rightedit">
+                        <a href="{%url 'edit3' board.id %}"><p class="edit1">수정하기</p></a>
+                        <a href="{%url 'delete3' board.id %}"><p class="edit2">삭제하기</p></a>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</body>
+</html>

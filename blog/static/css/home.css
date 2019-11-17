@@ -1,0 +1,512 @@
+@font-face {
+    font-family: 'Binggrae-Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Binggrae-Bold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 20px;
+}
+
+body {
+    font-size: 1rem;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.container {
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0);
+    height: 100%;
+    max-width: 100%;
+}
+
+/* header 시작 */
+
+header {
+    position: relative;
+    width: 100%;
+    /* background-image: url('../img/diamonds.png'); */
+    background-color: rgba(252, 229, 198, 0);
+    z-index: 9997;
+    height: 5rem;
+}
+
+header .out {
+    width: 60rem;
+    height: 4.25rem;
+    margin-left: 8rem;
+}
+
+#main {
+    font-family: 'Nanum Gothic', sans-serif;
+    font-family: 'Nanum Gothic Coding', monospace;
+    font-family: 'Nanum Myeongjo', serif;
+    color: black;
+    font-size: 1.9rem;
+    float: left;
+    padding: 1.1rem 0;
+    cursor: pointer;
+}
+
+#nav {
+    position: relative;
+}
+
+#nav li, a {
+    color: #333;
+    text-decoration: none;
+}
+
+.nav_links {
+    font-family: 'Nanum Gothic Coding', monospace;
+    list-style: none;
+    padding: 1.3rem 0 0 0;
+    position: absolute;
+    left: 18rem;
+}
+
+.nav_links li {
+    display: inline-block;
+}
+
+.nav_links li a {
+    padding: 0.75rem 1.4rem 0;
+    height: 2.6rem;
+    display: block;
+    line-height: 100%;
+    font-size: 0.7rem;
+    color: #333;
+}
+
+.nav_info {
+    font-family: 'Nanum Gothic Coding', monospace;
+    font-size: 0.7rem;
+    position: absolute;
+    top: 2rem;
+    right: 0;
+    list-style: none;
+    /* float: right; */
+}
+
+.nav_info li {
+    display: inline-block;
+    position: relative;
+}
+
+/* .nav_info li ~ li a::after {
+    content: "";
+    position: absolute;
+    width: 1px;
+    height: 0.6rem;
+    background: #e5e5e5;
+    transform: translateY(-10%);
+} */
+
+.nav_info li a {
+    padding: 0 0.75rem;
+    display: block;
+    line-height: 100%;
+    font-size: 0.7rem;
+    color: #333;
+}
+
+/* header 끝 */
+
+/* content 시작 */
+
+/* sidemenu 시작 */
+
+.background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .5);
+    transition: all .35s;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 1;
+}
+
+/* sidemenu icon 시작 */
+
+input[id="menuicon"] {
+    display: none;
+}
+
+header label.menu {
+    position: fixed;
+    top: 50%;
+    right: -20px;
+    transform: translateY(-50%);
+    width: 4rem;
+    height: 5rem;
+    /* display: flex; */
+    cursor: pointer;
+    background-color: rgba(177, 207, 187, 1);
+    /* border-left: .5px solid #000;
+    border-top: .5px solid #000;
+    border-bottom: .5px solid #000; */
+    border-radius: 20px;
+}
+
+#pickup {
+    font-family: 'Nanum Gothic Coding', monospace;
+    font-size: .65rem;
+    padding: 0 1rem 0 .2rem;
+    color: white;
+}
+
+.xi-truck {
+    padding: .7rem .5rem .5rem .5rem;
+    color: white;
+}
+
+#exiticon {
+    cursor: pointer;
+    float: right;
+}
+
+#menubtn {
+    font-family: 'Nanum Gothic', sans-serif;
+    font-family: 'Nanum Gothic Coding', monospace;
+    font-family: 'Nanum Myeongjo', serif;
+    font-size: 0.7rem;
+    display: block;
+    width: 50px;
+    height: 50px;
+    border-radius: 20px;
+}
+
+/* input[id="menuicon"]:checked ~ label {
+    background-position: -50px 0;
+} */
+
+input[id="menuicon"]+label {
+    display: block;
+    position: fixed;
+    cursor: pointer;
+    top: calc(50% -25px);
+    transition: all .35s;
+    z-index: 9999;
+}
+
+input[id="menuicon"]:checked+label[id="menubtn"] {
+    right: 15rem;
+    transition: all .35s;
+}
+
+/* input체크 */
+
+input#menuicon:checked~header label {
+    background-position: -24px 0;
+}
+
+input#menuicon:checked~.sidebar_content {
+    right: 0;
+}
+
+input#menuicon:checked~.background {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* sidemenu icon 끝 */
+
+div[class="sidebar"] {
+    width: 17rem;
+    height: 100%;
+    background: white;
+    position: fixed;
+    top: 0;
+    right: -17rem;
+    transition: all .35s;
+    z-index: 9999;
+}
+
+input[id="menuicon"]:checked+label+div {
+    right: 0rem;
+}
+
+/* sidemenu 끝 */
+
+/* 이미지 떠오르게 하는거임 시작 */
+
+#hellogeppetto {
+    width: 60rem;
+    position: relative;
+    top: 2rem;
+    padding: 0;
+}
+
+/* 2번 페이지 시작 */
+
+#title1 {
+    position: relative;
+    width: 20rem;
+    top: 18rem;
+    margin: 0;
+    padding: 0;
+    font-family: 'Binggrae-Bold';
+}
+
+#speech_bubble {
+    position: relative;
+    top: 20rem;
+    width: 25rem;
+}
+
+#grandfa {
+    position: relative;
+    top: 19.5rem;
+    padding-right: 15.2rem;
+}
+
+#left_line {
+    position: relative;
+    top: 16.1rem;
+    padding-right: 47rem;
+}
+
+#right_line {
+    position: relative;
+    top: 14.8rem;
+    padding-left: 32rem;
+}
+
+#explain1 {
+    position: relative;
+    top: 17rem;
+    width: 40rem;
+}
+
+#hearthand {
+    position: relative;
+    top: 13rem;
+    padding-left: 18rem;
+}
+
+/* 2번 페이지 끝 */
+
+/* 3번 페이지 시작 */
+
+#title2 {
+    position: relative;
+    top: 20rem;
+    font-family: 'Binggrae-Bold';
+}
+
+#trash {
+    position: relative;
+    top: 22rem;
+    margin-right: 35rem;
+    width: 12rem;
+}
+
+#senior {
+    position: relative;
+    /* left: 17rem; */
+    margin-left: 33rem;
+    top: 10rem;
+    width: 12rem;
+}
+
+#arrow1 {
+    position: relative;
+    top: -5rem;
+}
+
+#consumer {
+    position: relative;
+    top: -10rem;
+    width: 12rem;
+}
+
+#arrow2 {
+    position: relative;
+    top: -4rem;
+    padding-left: 20rem;
+}
+
+#repair {
+    position: relative;
+    top: -5rem;
+    left: 23rem;
+    width: 10rem;
+}
+
+/* 3번 페이지 끝 */
+
+/* 4번 페이지 시작 */
+
+#title3 {
+    position: relative;
+    top: -2rem;
+    font-family: 'Binggrae-Bold';
+}
+
+#explain2 {
+    position: relative;
+    top: 3rem;
+    left: 5rem;
+    width: 12rem;
+}
+
+#explain3 {
+    position: relative;
+    top: -2rem;
+    left: -7rem;
+    width: 12rem;
+}
+
+#explain4 {
+    position: relative;
+    top: -15.5rem;
+    margin-left: -18rem;
+    font-family: 'Nanum Gothic Coding', monospace;
+    font-size: 18px;
+}
+
+#explain5 {
+    position: relative;
+    top: -10rem;
+    margin-right: -14.5rem;
+    font-family: 'Nanum Gothic Coding', monospace;
+    font-size: 18px;
+}
+
+/* 4번 페이지 끝 */
+
+/* 이미지 떠오르게 하는거임 끝 */
+
+/* scroll down 시작 */
+
+.chevron::before {
+    border-style: solid;
+    border-width: 0.25em 0.25em 0 0;
+    content: '';
+    display: inline-block;
+    height: 20px;
+    position: relative;
+    -webkit-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    vertical-align: top;
+    width: 20px;
+}
+
+.chevron.right:before {
+    left: 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.chevron.bottom:before {
+    top: 0;
+    -webkit-transform: rotate(135deg);
+    -ms-transform: rotate(135deg);
+    transform: rotate(135deg);
+}
+
+.chevron.left:before {
+    left: 0.25em;
+    -webkit-transform: rotate(-135deg);
+    -ms-transform: rotate(-135deg);
+    transform: rotate(-135deg);
+}
+
+.hero__scroll {
+    position: absolute;
+    bottom: 60px;
+    width: 200px;
+    margin: auto;
+    display: block;
+    cursor: pointer;
+    padding-top: .5rem;
+    padding-bottom: 40px;
+    top: 30rem;
+    left: 0;
+    right: 0;
+    text-transform: uppercase;
+    font-family: 'Nanum Gothic', sans-serif;
+    font-family: 'Nanum Gothic Coding', monospace;
+    font-family: 'Nanum Myeongjo', serif;
+    font-size: 15px;
+}
+
+.hero__scroll .chevron {
+    margin-top: 10px;
+    display: block;
+    -webkit-animation: pulse 2s infinite;
+    animation: pulse 2s infinite;
+    color: rgb(177, 207, 187);
+}
+
+@-webkit-keyframes pulse {
+    0% {
+        -webkit-transform: translate(0, 0);
+        transform: translate(0, 0);
+    }
+    50% {
+        -webkit-transform: translate(0, 10px);
+        transform: translate(0, 10px);
+    }
+    100% {
+        -webkit-transform: translate(0, 0);
+        transform: translate(0, 0);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        -webkit-transform: translate(0, 0);
+        transform: translate(0, 0);
+    }
+    50% {
+        -webkit-transform: translate(0, 10px);
+        transform: translate(0, 10px);
+    }
+    100% {
+        -webkit-transform: translate(0, 0);
+        transform: translate(0, 0);
+    }
+}
+
+/* scroll down 끝 */
+
+/* scrolltotop 시작 */
+
+#btnScrollToTop {
+    position: fixed;
+    top: 87%;
+    right: 50px;
+    bottom: 20px;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(218, 231, 232, 1);
+    box-shadow: 0 0 10px rgba(250, 250, 250, 0.25);
+    color: #ffffff;
+    outline: none;
+    cursor: pointer;
+    padding: 8px 0 0 0;
+}
+
+#btnScrollToTop:active {
+    background: rgba(178, 213, 218, 1);
+}
+
+/* scrolltotop 끝 */
+
+/* content 끝 */

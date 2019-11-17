@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Myeongjo&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic+Coding&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <link rel="stylesheet" href="http://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <link rel="stylesheet" href="{% static 'css/newstyle.css' %}">
+    <!-- 주아체 -->
+    <link href="https://fonts.googleapis.com/css?family=Jua|Nanum+Gothic+Coding&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="out">
+                <a href="{% url 'main' %}"><p id="main">GEPPETTO</p></a>
+                <!-- <div class="search__container">
+                    <input class="search__input" type="text" placeholder="Search">
+                </div> -->
+                <nav id="nav">
+                        <ul class="nav_links">
+                            <li><a href="{% url 'main' %}" id="intro">소개</a></li>
+                            <li><a href="{% url 'market' %}" id="market">장터</a></li>
+                            <li><a href="{% url 'board' %}" id="board">게시판</a></li>
+                            <li><a href="{% url 'be_geppetto' %}" id="edu">교육 신청</a></li>
+                        </ul>
+                        <ul class="nav_info">
+                                {% if user.is_active %}
+    
+                                <li>
+                                    <h3>{{user.username}}</h3>
+                                </li>
+                                <li>
+                                    <a href="">
+                                        <p>mypage</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'logout'%}">
+                                        <p>logout</p>
+                                    </a>
+                                </li>
+                                <!-- 로그아웃 하기 -->
+                                {% else %}
+                                <li><a href="{% url 'login'%}" id="login">로그인</a></li>
+                                <li><a href="{% url 'signup'%}" id="join">회원가입</a></li>
+                                {% endif %}
+                        </ul>
+                    </nav>
+            </div>
+        <div>
+            <label for="menuicon" class="menu">
+                <i class="xi-truck xi-2x"></i>
+                <p id="pickup">수거요청</p>
+            </label>
+        </div>
+    </header>
+    
+        <div class="under">
+            <div class="row">
+
+                <div id="blog-form" class="col-md-4">
+                    <form id="contentForm" action="{% url 'create3' %}">
+                        {% csrf_token %}
+                        <p class="formtitle">게시판 글쓰기</p>
+                        <hr class="btline">
+                        <div class="form-group">
+                            <div class="btitle" name="title"><label for="title">제목 : </label></div>
+                            <input name="title" type="text" class="form-control form-control-lg" id="title" style="width:520px;height:30px" aria-describedby="" required />
+                        </div>
+                        <h4>아이디 : </h4>
+                        {{user.get_username}}
+                        <br>
+                        <div class="form-group">
+                            <label for="">내용 : </label>
+                            <br>
+                            <textarea name="body" id="body" class="form-control form-control-lg" rows="20" cols="70" contenteditable="true">{{board.body}}</textarea>
+                        </div>
+                        <div class=tablefoot>
+                            <input type="hidden" name="user_id" value="{{user.id}}">
+                            <button class="butt butt--swap" type="submit" value="제출하기">작성<span>작성</span></button>
+                        </div>
+                    </form>
+                </div>
+                
+                
+            </div>
+        </div>
+
+        <div class="bottom">
+
+        </div>
+    </div>  
+</body>
+</html>
